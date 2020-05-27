@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_waiters"
+    app:startDestination="@id/dashboardWaitersFragment">
+
+    <fragment
+        android:id="@+id/dashboardWaitersFragment"
+        android:name="com.devpro.resto.ui.dashboard_waiters.DashboardWaitersFragment"
+        android:label="DashboardWaitersFragment" >
+        <action
+            android:id="@+id/action_dashboardWaitersFragment_to_menusFragment"
+            app:destination="@id/menusFragment" />
+        <action
+            android:id="@+id/action_dashboardWaitersFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/menusFragment"
+        android:name="com.devpro.resto.ui.menus.MenusFragment"
+        android:label="fragment_menus"
+        tools:layout="@layout/fragment_menus" >
+        <argument android:name="id_category" />
+        <argument android:name="name_category" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.devpro.resto.ui.profile.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+</navigation>

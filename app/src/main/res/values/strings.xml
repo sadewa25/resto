@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">SIMAPAN</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Masuk</string>
+    <string name="ic_splashscreen">Ikon Splashscreen</string>
+    <string name="network_unavailable">Tidak Ada Koneksi Internet</string>
+    <string name="login_page">Login Page</string>
+    <string name="ic_login">Ikon Login</string>
+    <string name="title_resto">Resto Anda</string>
+    <string name="title_resto_desc">Sistem Pemesanan Resto Anda</string>
+    <string name="username">Username</string>
+    <string name="id_user_type_patient">0</string>
+    <string name="id_user_type_companion">1</string>
+    <string name="success_">1</string>
+    <string name="ic_item_dashboard">Ikon Item Dashboard</string>
+    <string name="menu_report">Laporan</string>
+    <string name="menu_history">Riwayat</string>
+    <string name="menu_profile">Profile</string>
+    <string name="status_cash">Cash : %s</string>
+    <string name="category">Kategori</string>
+    <string name="menu">Menu</string>
+    <string name="key_menus_fragment_id_category">id_category</string>
+    <string name="key_menus_fragment_name_category">name_category</string>
+</resources>
