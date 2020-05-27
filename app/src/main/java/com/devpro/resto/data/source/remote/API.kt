@@ -3,7 +3,6 @@ package com.devpro.resto.data.source.remote
 import com.devpro.resto.data.source.remote.response.ResponseJSON
 import com.devpro.resto.data.source.remote.response.ValuesItems
 import retrofit2.http.Body
-import retrofit2.http.FormUrlEncoded
 import retrofit2.http.POST
 
 interface API {
@@ -19,6 +18,16 @@ interface API {
 
     @POST("menu/viewMenusByKat.php")
     suspend fun getMenuByCategory(
+        @Body data: ValuesItems
+    ): ResponseJSON
+
+    @POST("meja/viewAllMeja.php")
+    suspend fun getEntireTables(
+        @Body data: ValuesItems
+    ): ResponseJSON
+
+    @POST("meja/updateMeja.php")
+    suspend fun getUpdateTables(
         @Body data: ValuesItems
     ): ResponseJSON
 }

@@ -39,4 +39,12 @@ class AppRepository(
         return remoteRepository.getMenuByCategory(data)
     }
 
+    override suspend fun getEntireTables(data: ValuesItems): ResponseJSON {
+        return remoteRepository.getEntireTables(data)
+    }
+
+    override suspend fun getUpdateTables(data: ValuesItems): ResponseJSON {
+        return remoteRepository.getUpdateTables(data)
+    }
+
 }

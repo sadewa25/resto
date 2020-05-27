@@ -16,6 +16,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.multidex.BuildConfig
+import com.afollestad.materialdialogs.MaterialDialog
+import com.devpro.resto.R
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -60,7 +62,6 @@ class Utils {
         return "${Calendar.getInstance()
             .timeInMillis}_${idUser}_$status.jpg"
     }
-
 
     fun saveImage(myBitmap: Bitmap, context: Context?, nameFile: String): String {
         val imagePath = ""
@@ -138,5 +139,23 @@ class Utils {
         val intent = Intent(context, destinationClass::class.java)
         intent.putExtras(bundle)
         context?.startActivity(intent)
+    }
+
+    fun formDialog(
+        context: Context,
+        title: String,
+        message: String,
+        listenerPositive: (MaterialDialog) -> Unit
+    ) {
+        MaterialDialog(context).show {
+            title(text = title)
+            message(text = message)
+            positiveButton(text = context.resources?.getString(R.string.yes_)) {
+                listenerPositive(it)
+            }
+            negativeButton(text = context.resources?.getString(R.string.no_)) {
+                it.dismiss()
+            }
+        }
     }
 }

@@ -51,15 +51,32 @@
             android:layout_marginStart="@dimen/margin_small"
             android:layout_marginTop="@dimen/margin_small"
             android:layout_marginEnd="@dimen/margin_small"
-            android:layout_marginBottom="@dimen/margin_default"
+            android:layout_marginBottom="@dimen/margin_small"
             app:items="@{model.dataCategory}"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            app:layout_constraintBottom_toTopOf="@+id/btn_dashboard_waiter_status_cash"
+            app:layout_constraintBottom_toTopOf="@+id/btn_dashboard_waiter_status_tables"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_dashboatf_waiters_category"
+            app:layout_constraintVertical_bias="1.0"
             app:spanCount="2"
             tools:listitem="@layout/rv_item_dashboard_waiters" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_dashboard_waiter_status_tables"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_default"
+            android:layout_marginEnd="@dimen/margin_default"
+            android:onClick="@{() -> model.openTableStatus()}"
+            android:text="@string/status_tables"
+            android:textColor="@android:color/white"
+            app:backgroundTint="@color/primaryColor"
+            app:cornerRadius="@dimen/margin_default"
+            app:layout_constraintBottom_toTopOf="@+id/btn_dashboard_waiter_status_cash"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_dashboard_waiter_status_cash"
@@ -67,7 +84,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_default"
             android:layout_marginEnd="@dimen/margin_default"
-            android:layout_marginBottom="@dimen/margin_default"
+            android:layout_marginBottom="@dimen/margin_small"
             android:padding="@dimen/margin_default"
             android:text="@string/status_cash"
             app:backgroundTint="@color/primaryDarkColor"

@@ -7,4 +7,6 @@ interface AppDataSource {
     suspend fun loginUsers(datas:ValuesItems): ResponseJSON
     suspend fun getCategory(data:ValuesItems): ResponseJSON
     suspend fun getMenuByCategory(data:ValuesItems): ResponseJSON
+    suspend fun getEntireTables(data:ValuesItems): ResponseJSON
+    suspend fun getUpdateTables(data:ValuesItems): ResponseJSON
 }

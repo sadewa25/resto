@@ -23,4 +23,10 @@ class RemoteRepository(private val apiService: RetrofitClient) {
 
     suspend fun getMenuByCategory(data:ValuesItems) =
         apiService.response().getMenuByCategory(data)
+
+    suspend fun getEntireTables(data:ValuesItems) =
+        apiService.response().getEntireTables(data)
+
+    suspend fun getUpdateTables(data:ValuesItems) =
+        apiService.response().getUpdateTables(data)
 }

@@ -15,6 +15,9 @@
         <action
             android:id="@+id/action_dashboardWaitersFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_dashboardWaitersFragment_to_tablesFragment"
+            app:destination="@id/tablesFragment" />
     </fragment>
     <fragment
         android:id="@+id/menusFragment"
@@ -29,4 +32,9 @@
         android:name="com.devpro.resto.ui.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/tablesFragment"
+        android:name="com.devpro.resto.ui.tables.TablesFragment"
+        android:label="TablesFragment" >
+    </fragment>
 </navigation>

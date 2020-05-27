@@ -11,7 +11,7 @@
 
         <variable
             name="model"
-            type="com.devpro.resto.ui.menus.MenusViewModel" />
+            type="com.devpro.resto.ui.tables.TablesViewModel" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -28,11 +28,11 @@
             android:padding="@dimen/margin_default">
 
             <TextView
-                android:id="@+id/tv_item_dashboard_title"
+                android:id="@+id/tv_item_menus_title"
                 style="@style/TextViewGeneral"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@{menus.nameMenu}"
+                android:text="@{menus.nameMeja}"
                 android:textAlignment="center"
                 android:textColor="@color/primaryDarkColor"
                 android:textSize="@dimen/text_default"
@@ -42,17 +42,18 @@
                 tools:text="Makanan" />
 
             <TextView
-                android:id="@+id/tv_item_dashboard_price"
+                android:id="@+id/tv_item_menus_status"
                 style="@style/TextViewGeneral"
-                rupiah="@{menus.priceMenu}"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_small"
+                android:text="@{menus.statusMeja}"
                 android:textAlignment="center"
+                android:textColor="@{menus.statusMeja.equals(`Tersedia`) ? @color/greenColor : @color/redColor}"
                 android:textSize="@dimen/text_default"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_item_dashboard_title"
+                app:layout_constraintTop_toBottomOf="@+id/tv_item_menus_title"
                 tools:text="Makanan" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 

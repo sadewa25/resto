@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SIMAPAN</string>
+    <string name="app_name">RESTO</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -25,4 +25,10 @@
     <string name="menu">Menu</string>
     <string name="key_menus_fragment_id_category">id_category</string>
     <string name="key_menus_fragment_name_category">name_category</string>
+    <string name="status_tables">Status Meja</string>
+    <string name="yes_">Ya</string>
+    <string name="no_">Tidak</string>
+    <string name="inforrmation">Informasi</string>
+    <string name="information_table_update">Apakah Anda Ingin Memesan Meja Ini?</string>
+    <string name="status_table_not_available">Kosong</string>
 </resources>

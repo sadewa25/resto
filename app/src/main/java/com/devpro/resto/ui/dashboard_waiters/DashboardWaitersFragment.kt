@@ -54,11 +54,23 @@ class DashboardWaitersFragment : Fragment() {
         model.onItemClick.observe(viewLifecycleOwner, EventObserver {
             navigateToMenus(it)
         })
+        model.openTableStatus.observe(viewLifecycleOwner, EventObserver {
+            navigateToChoiceTables()
+        })
+    }
+
+    private fun navigateToChoiceTables() {
+        val actions =
+            DashboardWaitersFragmentDirections.actionDashboardWaitersFragmentToTablesFragment()
+        findNavController().navigate(actions)
     }
 
     private fun navigateToMenus(it: ValuesItems) {
         val actions =
-            DashboardWaitersFragmentDirections.actionDashboardWaitersFragmentToMenusFragment(it.idKategoriMenu.toString(),it.nameKategoriMenu.toString())
+            DashboardWaitersFragmentDirections.actionDashboardWaitersFragmentToMenusFragment(
+                it.idKategoriMenu.toString(),
+                it.nameKategoriMenu.toString()
+            )
         findNavController().navigate(actions)
     }
 

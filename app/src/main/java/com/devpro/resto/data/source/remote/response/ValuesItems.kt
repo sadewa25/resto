@@ -41,5 +41,17 @@ data class ValuesItems(
 	val priceMenu: String? = null,
 
 	@field:SerializedName("name_menu")
-	val nameMenu: String? = null
+	val nameMenu: String? = null,
+
+	@field:SerializedName("status_meja")
+	val statusMeja: String? = null,
+
+	@field:SerializedName("id_meja")
+	val idMeja: String? = null,
+
+	@field:SerializedName("name_meja")
+	val nameMeja: String? = null,
+
+	@field:SerializedName("nama_meja")
+	val namaMeja: String? = null
 )

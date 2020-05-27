@@ -45,4 +45,11 @@ class DashboardWaitersViewModel(private val repository: AppRepository?) : ViewMo
         _onItemClick.value = Event(data)
     }
 
+    private val _openTableStatus = MutableLiveData<Event<Unit>>()
+    val openTableStatus: LiveData<Event<Unit>> = _openTableStatus
+
+    fun openTableStatus() {
+        _openTableStatus.value = Event(Unit)
+    }
+
 }
