@@ -30,4 +30,14 @@ interface API {
     suspend fun getUpdateTables(
         @Body data: ValuesItems
     ): ResponseJSON
+
+    @POST("cart/insertCart.php")
+    suspend fun insertCart(
+        @Body data: ValuesItems
+    ): ResponseJSON
+
+    @POST("cart/viewCartByOrder.php")
+    suspend fun getViewCartByOredr(
+        @Body data: ValuesItems
+    ): ResponseJSON
 }

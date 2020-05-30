@@ -51,40 +51,24 @@
             android:layout_marginStart="@dimen/margin_small"
             android:layout_marginTop="@dimen/margin_small"
             android:layout_marginEnd="@dimen/margin_small"
-            android:layout_marginBottom="@dimen/margin_default"
             app:items="@{model.dataMenu}"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            app:layout_constraintBottom_toTopOf="@+id/btn_dashboard_waiter_status_cash"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_menus_category"
             app:spanCount="2"
             tools:listitem="@layout/rv_item_menus" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_dashboard_waiter_status_cash"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_default"
-            android:layout_marginEnd="@dimen/margin_default"
-            android:layout_marginBottom="@dimen/margin_default"
-            android:padding="@dimen/margin_default"
-            android:text="@string/status_cash"
-            app:backgroundTint="@color/primaryDarkColor"
-            app:cornerRadius="@dimen/margin_default"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
         <ProgressBar
             android:id="@+id/loading_menus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:indeterminateTint="@color/primaryDarkColor"
-            app:layout_constraintBottom_toTopOf="@+id/btn_dashboard_waiter_status_cash"
+            app:layout_constraintBottom_toBottomOf="@+id/rv_menus"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_menus_category" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

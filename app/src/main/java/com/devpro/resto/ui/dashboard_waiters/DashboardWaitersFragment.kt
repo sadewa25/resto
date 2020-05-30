@@ -12,6 +12,7 @@ import com.devpro.resto.R
 import com.devpro.resto.data.source.remote.response.ResponseJSON
 import com.devpro.resto.data.source.remote.response.ValuesItems
 import com.devpro.resto.databinding.FragmentDashboardWaitersBinding
+import com.devpro.resto.utils.SessionManager
 import com.devpro.resto.utils.Utils
 import com.devpro.resto.utils.common.EventObserver
 import com.devpro.resto.utils.common.Status
@@ -24,6 +25,9 @@ class DashboardWaitersFragment : Fragment() {
     private val model: DashboardWaitersViewModel by viewModel()
     private val _dashboardWaitersAdapter by lazy {
         DashboardWaitersAdapter(model)
+    }
+    private val sessionManager by lazy {
+        SessionManager(requireContext())
     }
 
     override fun onCreateView(
@@ -48,6 +52,57 @@ class DashboardWaitersFragment : Fragment() {
         setupRvAdapter()
         setupCategory()
         setupObservers()
+        setupTableStatus()
+        setupCartByOrder()
+    }
+
+    private fun setupCartByOrder() {
+        model.getViewCartByOrder(
+            ValuesItems(
+                apikey = BuildConfig.API_Key,
+                noOrder = sessionManager.getNoOrder().toString()
+            )
+        ).observe(viewLifecycleOwner, Observer {
+            it?.let { resource ->
+                when (resource.status) {
+                    Status.SUCCESS -> {
+                        loading_dashboard_waiters.visibility = View.GONE
+                        resource.data.let { data -> retrieveCartOrder(data) }
+                    }
+                    Status.ERROR -> {
+                        loading_dashboard_waiters.visibility = View.GONE
+                    }
+                    Status.LOADING -> {
+                        loading_dashboard_waiters.visibility = View.VISIBLE
+                    }
+                }
+            }
+        })
+    }
+
+    private fun retrieveCartOrder(data: ResponseJSON?) {
+        if (!data?.values.isNullOrEmpty()) {
+            btn_dashboard_waiter_status_cash.text = String.format(
+                "%s : %s",
+                getString(R.string.status_cash),
+                Utils().getFormatRupiah(data?.values?.get(0)?.totalPrice.toString().toDouble())
+            )
+        }
+    }
+
+    private fun setupTableStatus() {
+        if (!sessionManager.getTablesUser().isNullOrEmpty())
+            btn_dashboard_waiter_status_tables.text = String.format(
+                "%s _ %s",
+                getString(R.string.status_tables),
+                sessionManager.getNameTablesUser()
+            )
+        else
+            btn_dashboard_waiter_status_tables.text = String.format(
+                "%s _ %s",
+                getString(R.string.status_tables),
+                getString(R.string.tables_failed)
+            )
     }
 
     private fun setupObservers() {
@@ -57,6 +112,15 @@ class DashboardWaitersFragment : Fragment() {
         model.openTableStatus.observe(viewLifecycleOwner, EventObserver {
             navigateToChoiceTables()
         })
+        model.openCash.observe(viewLifecycleOwner, EventObserver {
+            navigateToDetailCart()
+        })
+    }
+
+    private fun navigateToDetailCart() {
+        val actions =
+            DashboardWaitersFragmentDirections.actionDashboardWaitersFragmentToDetailCartFragment()
+        findNavController().navigate(actions)
     }
 
     private fun navigateToChoiceTables() {

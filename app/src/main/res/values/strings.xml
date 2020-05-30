@@ -20,7 +20,7 @@
     <string name="menu_report">Laporan</string>
     <string name="menu_history">Riwayat</string>
     <string name="menu_profile">Profile</string>
-    <string name="status_cash">Cash : %s</string>
+    <string name="status_cash">Cash :</string>
     <string name="category">Kategori</string>
     <string name="menu">Menu</string>
     <string name="key_menus_fragment_id_category">id_category</string>
@@ -31,4 +31,18 @@
     <string name="inforrmation">Informasi</string>
     <string name="information_table_update">Apakah Anda Ingin Memesan Meja Ini?</string>
     <string name="status_table_not_available">Kosong</string>
+    <string name="qty">Qty</string>
+    <string name="submit">Submit</string>
+    <string name="name_menu">name_menu</string>
+    <string name="price_menu">price_menu</string>
+    <string name="tables_success">Telah Dipilih</string>
+    <string name="tables_failed">Belum Dipilih</string>
+    <string name="id_menu">id_menu</string>
+    <string name="new_order">Pesanan Baru</string>
+    <string name="add_order">Tambah Pesanan</string>
+    <string name="already_update">Telah Di Update</string>
+    <string name="key_menus_fragment_status_insert">status_insert</string>
+    <string name="detail_order">Detail Pesanan</string>
+    <string name="ic_detail_cart">Ikon Detail Belanja</string>
+    <string name="qty_format">Qty : %s</string>
 </resources>

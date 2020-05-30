@@ -47,4 +47,12 @@ class AppRepository(
         return remoteRepository.getUpdateTables(data)
     }
 
+    override suspend fun insertCart(data: ValuesItems): ResponseJSON {
+        return remoteRepository.insertCart(data)
+    }
+
+    override suspend fun getViewCartByOrder(data: ValuesItems): ResponseJSON {
+        return remoteRepository.getViewCartByOrder(data)
+    }
+
 }

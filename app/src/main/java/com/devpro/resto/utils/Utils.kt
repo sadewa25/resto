@@ -17,6 +17,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.multidex.BuildConfig
 import com.afollestad.materialdialogs.MaterialDialog
+import com.afollestad.materialdialogs.list.listItems
 import com.devpro.resto.R
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
@@ -25,6 +26,7 @@ import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
+import java.text.NumberFormat
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -109,6 +111,13 @@ class Utils {
         return MultipartBody.Part.createFormData("file", file.name, mFile)
     }
 
+    fun getFormatRupiah(currency: Double): String {
+        val value = currency.toDouble()
+        val localeID = Locale("in", "ID")
+        val formatRupiah = NumberFormat.getCurrencyInstance(localeID)
+        return formatRupiah.format(value).toString()
+    }
+
     fun getRequestBody(filePath: String): RequestBody {
         val file = File(filePath)
         return RequestBody.create("text/plain".toMediaTypeOrNull(), file.name)
@@ -155,6 +164,18 @@ class Utils {
             }
             negativeButton(text = context.resources?.getString(R.string.no_)) {
                 it.dismiss()
+            }
+        }
+    }
+
+    fun formDialogList(
+        context: Context,
+        dataItems: ArrayList<String>,
+        listenerPositive: (MaterialDialog, Int) -> Unit
+    ) {
+        MaterialDialog(context).show {
+            listItems(items = dataItems) { dialog, index, text ->
+                listenerPositive(dialog, index)
             }
         }
     }

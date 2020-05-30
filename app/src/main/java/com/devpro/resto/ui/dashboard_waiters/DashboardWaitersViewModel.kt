@@ -38,6 +38,21 @@ class DashboardWaitersViewModel(private val repository: AppRepository?) : ViewMo
         }
     }
 
+    fun getViewCartByOrder(datas: ValuesItems) = liveData(Dispatchers.IO) {
+        emit(Resource.loading(data = null))
+        try {
+            emit(
+                Resource.success(
+                    data = repository?.getViewCartByOrder(
+                        datas
+                    )
+                )
+            )
+        } catch (exception: Exception) {
+            emit(Resource.error(data = null, message = exception.message ?: "Error Occurred!"))
+        }
+    }
+
     private val _onItemClick = MutableLiveData<Event<ValuesItems>>()
     val onItemClick: LiveData<Event<ValuesItems>> = _onItemClick
 
@@ -50,6 +65,13 @@ class DashboardWaitersViewModel(private val repository: AppRepository?) : ViewMo
 
     fun openTableStatus() {
         _openTableStatus.value = Event(Unit)
+    }
+
+    private val _openCash = MutableLiveData<Event<Unit>>()
+    val openCash: LiveData<Event<Unit>> = _openCash
+
+    fun openCash() {
+        _openCash.value = Event(Unit)
     }
 
 }

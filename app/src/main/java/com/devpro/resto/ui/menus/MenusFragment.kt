@@ -7,13 +7,16 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import com.afollestad.materialdialogs.MaterialDialog
 import com.devpro.resto.BuildConfig
 import com.devpro.resto.R
 import com.devpro.resto.data.source.remote.response.ResponseJSON
 import com.devpro.resto.data.source.remote.response.ValuesItems
 import com.devpro.resto.databinding.FragmentMenusBinding
 import com.devpro.resto.utils.Utils
+import com.devpro.resto.utils.common.EventObserver
 import com.devpro.resto.utils.common.Status
+import com.devpro.resto.utils.findNavController
 import kotlinx.android.synthetic.main.fragment_menus.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -47,6 +50,31 @@ class MenusFragment : Fragment() {
         setupHeader()
         setupRvAdapter()
         setupGetMenusByCategory()
+        setupObservers()
+    }
+
+    private fun setupObservers() {
+        model.onItemClick.observe(viewLifecycleOwner, EventObserver {
+            Utils().formDialogList(
+                requireContext(),
+                arrayListOf(getString(R.string.new_order), getString(R.string.add_order))
+            ) { materialDialog: MaterialDialog, i: Int ->
+                when (i) {
+                    1 -> navigateToCart(it, "1")
+                    0 -> navigateToCart(it, "0")
+                }
+            }
+        })
+    }
+
+    private fun navigateToCart(it: ValuesItems, statusInsert: String) {
+        val actions = MenusFragmentDirections.actionMenusFragmentToCartFragment(
+            it.nameMenu,
+            it.priceMenu,
+            it.idMenu,
+            statusInsert
+        )
+        findNavController().navigate(actions)
     }
 
     private fun setupHeader() {

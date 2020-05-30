@@ -87,6 +87,7 @@
             android:layout_marginBottom="@dimen/margin_small"
             android:padding="@dimen/margin_default"
             android:text="@string/status_cash"
+            android:onClick="@{() -> model.openCash()}"
             app:backgroundTint="@color/primaryDarkColor"
             app:cornerRadius="@dimen/margin_default"
             app:layout_constraintBottom_toBottomOf="parent"

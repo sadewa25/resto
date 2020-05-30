@@ -43,5 +43,41 @@ class SessionManager(private val context: Context?) {
     fun getRoleUser(): String? {
         return pref?.getString(roleUser, ""); }
 
+    private val tablesUser = "tablesUser"
+    fun setTablesUser(data: String) {
+        editor?.putString(tablesUser, data)
+        editor?.apply()
+    }
+
+    fun getTablesUser(): String? {
+        return pref?.getString(tablesUser, ""); }
+
+    private val nameTablesUser = "nameTablesUser"
+    fun setNameTablesUser(data: String) {
+        editor?.putString(nameTablesUser, data)
+        editor?.apply()
+    }
+
+    fun getNameTablesUser(): String? {
+        return pref?.getString(nameTablesUser, ""); }
+
+    private val noOrder = "noOrder"
+    fun setNoOrder(data: String) {
+        editor?.putString(noOrder, data)
+        editor?.apply()
+    }
+
+    fun getNoOrder(): String? {
+        return pref?.getString(noOrder, ""); }
+
+    private val idCart = "idCart"
+    fun setIdCart(data: String) {
+        editor?.putString(idCart, data)
+        editor?.apply()
+    }
+
+    fun getIdCart(): String? {
+        return pref?.getString(idCart, ""); }
+
 
 }

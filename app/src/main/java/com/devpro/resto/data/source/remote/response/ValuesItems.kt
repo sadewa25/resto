@@ -13,6 +13,9 @@ data class ValuesItems(
 	@field:SerializedName("id_users")
 	val idUsers: String? = null,
 
+	@field:SerializedName("id_user")
+	val idUser: String? = null,
+
 	@field:SerializedName("username")
 	val username: String? = null,
 
@@ -53,5 +56,35 @@ data class ValuesItems(
 	val nameMeja: String? = null,
 
 	@field:SerializedName("nama_meja")
-	val namaMeja: String? = null
+	val namaMeja: String? = null,
+
+	@field:SerializedName("no_order")
+	val noOrder: String? = null,
+
+	@field:SerializedName("date_cart")
+	val dateCart: String? = null,
+
+	@field:SerializedName("total_price")
+	val totalPrice: String? = null,
+
+	@field:SerializedName("total_harga")
+	val totalHarga: String? = null,
+
+	@field:SerializedName("nama_pemesan")
+	val namaPemesan: String? = null,
+
+	@field:SerializedName("status_cart")
+	val statusCart: String? = null,
+
+	@field:SerializedName("qty")
+	val qty: String? = null,
+
+	@field:SerializedName("id_cart")
+	val idCart: String? = null,
+
+	@field:SerializedName("name_order")
+	val nameOrder: String? = null,
+
+	@field:SerializedName("detail")
+	val detail: List<DetailItems?>? = null
 )

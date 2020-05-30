@@ -12,6 +12,7 @@ import com.devpro.resto.R
 import com.devpro.resto.data.source.remote.response.ResponseJSON
 import com.devpro.resto.data.source.remote.response.ValuesItems
 import com.devpro.resto.databinding.FragmentTablesBinding
+import com.devpro.resto.utils.SessionManager
 import com.devpro.resto.utils.Utils
 import com.devpro.resto.utils.common.EventObserver
 import com.devpro.resto.utils.common.Status
@@ -24,6 +25,9 @@ class TablesFragment : Fragment() {
     private val model: TablesViewModel by viewModel()
     private val _TableAdapter by lazy {
         TablesAdapter(model)
+    }
+    private val sessionManager by lazy {
+        SessionManager(requireContext())
     }
 
     override fun onCreateView(
@@ -58,44 +62,18 @@ class TablesFragment : Fragment() {
                 getString(R.string.inforrmation),
                 getString(R.string.information_table_update)
             ) {
-                updateStatusTable(value)
+                retrieveUpdateList(value)
             }
         })
     }
 
-    private fun updateStatusTable(value: ValuesItems) {
-        model.updateTable(
-            ValuesItems(
-                apikey = BuildConfig.API_Key,
-                idMeja = value.idMeja,
-                statusMeja = getString(R.string.status_table_not_available),
-                namaMeja = value.nameMeja
-            )
-        ).observe(viewLifecycleOwner, Observer {
-            it?.let { resource ->
-                when (resource.status) {
-                    Status.SUCCESS -> {
-                        loading_tables.visibility = View.GONE
-                        resource.data.let { data -> retrieveUpdateList(data) }
-                    }
-                    Status.ERROR -> {
-                        loading_tables.visibility = View.GONE
-                    }
-                    Status.LOADING -> {
-                        loading_tables.visibility = View.VISIBLE
-                    }
-                }
-            }
-        })
-    }
-
-    private fun retrieveUpdateList(data: ResponseJSON?) {
-        if (data?.error == true)
-            Utils().toast(requireContext(), data.message.toString())
-        else {
-            Utils().toast(requireContext(), data?.message.toString())
-            findNavController().navigateUp()
-        }
+    private fun retrieveUpdateList(
+        value: ValuesItems
+    ) {
+        sessionManager.setTablesUser(value.idMeja.toString())
+        sessionManager.setNameTablesUser(value.nameMeja.toString())
+        Utils().toast(requireContext(), getString(R.string.already_update))
+        findNavController().navigateUp()
     }
 
     private fun setupLoadEntireTable() {

@@ -5,6 +5,7 @@ import com.devpro.resto.data.source.remote.RemoteRepository
 import com.devpro.resto.data.source.remote.RetrofitClient
 import com.devpro.resto.ui.cart.CartViewModel
 import com.devpro.resto.ui.dashboard_waiters.DashboardWaitersViewModel
+import com.devpro.resto.ui.detail_cart.DetailCartViewModel
 import com.devpro.resto.ui.login.LoginViewModel
 import com.devpro.resto.ui.menus.MenusViewModel
 import com.devpro.resto.ui.tables.TablesViewModel
@@ -17,6 +18,7 @@ object AppModule {
         single { MenusViewModel(get()) }
         single { TablesViewModel(get()) }
         single { CartViewModel(get()) }
+        single { DetailCartViewModel(get()) }
     }
 
     val repositoryModule = module {

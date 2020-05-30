@@ -29,4 +29,10 @@ class RemoteRepository(private val apiService: RetrofitClient) {
 
     suspend fun getUpdateTables(data:ValuesItems) =
         apiService.response().getUpdateTables(data)
+
+    suspend fun insertCart(data:ValuesItems) =
+        apiService.response().insertCart(data)
+
+    suspend fun getViewCartByOrder(data:ValuesItems) =
+        apiService.response().getViewCartByOredr(data)
 }

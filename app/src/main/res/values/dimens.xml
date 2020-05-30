@@ -6,4 +6,8 @@
     <dimen name="text_default_22">22sp</dimen>
     <dimen name="margin_small_5dp">5dp</dimen>
     <dimen name="text_default">16sp</dimen>
+    <dimen name="margin_default_22">22dp</dimen>
+    <dimen name="margin_medium_42">42dp</dimen>
+    <dimen name="margin_medium_46">46</dimen>
+    <dimen name="margin_medium_64">64dp</dimen>
 </resources>

@@ -18,6 +18,9 @@
         <action
             android:id="@+id/action_dashboardWaitersFragment_to_tablesFragment"
             app:destination="@id/tablesFragment" />
+        <action
+            android:id="@+id/action_dashboardWaitersFragment_to_detailCartFragment"
+            app:destination="@id/detailCartFragment" />
     </fragment>
     <fragment
         android:id="@+id/menusFragment"
@@ -26,6 +29,9 @@
         tools:layout="@layout/fragment_menus" >
         <argument android:name="id_category" />
         <argument android:name="name_category" />
+        <action
+            android:id="@+id/action_menusFragment_to_cartFragment"
+            app:destination="@id/cartFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -37,4 +43,29 @@
         android:name="com.devpro.resto.ui.tables.TablesFragment"
         android:label="TablesFragment" >
     </fragment>
+    <dialog
+        android:id="@+id/cartFragment"
+        android:name="com.devpro.resto.ui.cart.CartFragment"
+        android:label="fragment_cart"
+        tools:layout="@layout/fragment_cart" >
+        <argument
+            android:name="name_menu"
+            app:argType="string"
+            app:nullable="true" />
+        <argument android:name="price_menu"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="id_menu"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="status_insert"
+            app:argType="string"
+            app:nullable="true" />
+    </dialog>
+    <fragment
+        android:id="@+id/detailCartFragment"
+        android:name="com.devpro.resto.ui.detail_cart.DetailCartFragment"
+        android:label="DetailCartFragment" />
 </navigation>
