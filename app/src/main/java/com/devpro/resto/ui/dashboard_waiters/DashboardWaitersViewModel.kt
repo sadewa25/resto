@@ -67,6 +67,13 @@ class DashboardWaitersViewModel(private val repository: AppRepository?) : ViewMo
         _openTableStatus.value = Event(Unit)
     }
 
+    private val _openProfile = MutableLiveData<Event<Unit>>()
+    val openProfile: LiveData<Event<Unit>> = _openProfile
+
+    fun openProfile() {
+        _openProfile.value = Event(Unit)
+    }
+
     private val _openCash = MutableLiveData<Event<Unit>>()
     val openCash: LiveData<Event<Unit>> = _openCash
 

@@ -62,7 +62,10 @@ class TablesFragment : Fragment() {
                 getString(R.string.inforrmation),
                 getString(R.string.information_table_update)
             ) {
-                retrieveUpdateList(value)
+                if (value.statusMeja.equals(getString(R.string.empty_)))
+                    Utils().toast(requireContext(), getString(R.string.tables_ordere))
+                else
+                    retrieveUpdateList(value)
             }
         })
     }

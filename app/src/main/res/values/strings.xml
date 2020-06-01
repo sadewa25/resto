@@ -46,4 +46,11 @@
     <string name="ic_detail_cart">Ikon Detail Belanja</string>
     <string name="qty_format">Qty : %s</string>
     <string name="order">Pesan</string>
+    <string name="please_choice_menu">Silahkan Pilih Menu Terlebih Dahulu</string>
+    <string name="empty_">Kosong</string>
+    <string name="tables_ordere">Meja Telah Dipesan</string>
+    <string name="available_">Tersedia</string>
+    <string name="signout">Keluar</string>
+    <string name="confirmation_signout">Apakah Anda Ingin Keluar?</string>
+    <string name="waiters">Waiters</string>
 </resources>

@@ -28,7 +28,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.05" />
+            app:layout_constraintGuide_percent="0.1" />
+
+        <ImageView
+            android:id="@+id/iv_dashboard_waiters"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginEnd="@dimen/margin_medium"
+            android:contentDescription="@string/ic_item_dashboard"
+            android:onClick="@{()->model.openProfile()}"
+            android:src="@drawable/ic_baseline_account_circle_24"
+            app:layout_constraintBottom_toTopOf="@+id/gl_dashboard_waiters"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_dashboatf_waiters_category"
@@ -85,9 +97,9 @@
             android:layout_marginStart="@dimen/margin_default"
             android:layout_marginEnd="@dimen/margin_default"
             android:layout_marginBottom="@dimen/margin_small"
+            android:onClick="@{() -> model.openCash()}"
             android:padding="@dimen/margin_default"
             android:text="@string/status_cash"
-            android:onClick="@{() -> model.openCash()}"
             app:backgroundTint="@color/primaryDarkColor"
             app:cornerRadius="@dimen/margin_default"
             app:layout_constraintBottom_toBottomOf="parent"

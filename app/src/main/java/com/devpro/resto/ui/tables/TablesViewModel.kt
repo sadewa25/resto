@@ -38,21 +38,6 @@ class TablesViewModel(private val repository: AppRepository?) : ViewModel() {
         }
     }
 
-    fun updateTable(datas: ValuesItems) = liveData(Dispatchers.IO) {
-        emit(Resource.loading(data = null))
-        try {
-            emit(
-                Resource.success(
-                    data = repository?.getUpdateTables(
-                        datas
-                    )
-                )
-            )
-        } catch (exception: Exception) {
-            emit(Resource.error(data = null, message = exception.message ?: "Error Occurred!"))
-        }
-    }
-
     private val _onItemClick = MutableLiveData<Event<ValuesItems>>()
     val onItemClick: LiveData<Event<ValuesItems>> = _onItemClick
 

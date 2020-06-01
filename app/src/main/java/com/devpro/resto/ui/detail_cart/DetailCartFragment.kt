@@ -1,7 +1,6 @@
 package com.devpro.resto.ui.detail_cart
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -116,13 +115,43 @@ class DetailCartFragment : Fragment() {
         })
     }
 
+    private fun updateTables() {
+        model.updateTable(
+            ValuesItems(
+                apikey = BuildConfig.API_Key,
+                namaMeja = sessionManager.getNameTablesUser(),
+                idMeja = sessionManager.getTablesUser(),
+                statusMeja = getString(R.string.available_)
+            )
+        ).observe(viewLifecycleOwner, Observer {
+            it?.let { resource ->
+                when (resource.status) {
+                    Status.SUCCESS -> {
+                        loading_detail_cart.visibility = View.GONE
+                        resource.data.let { data -> retrieveUpdateTables(data) }
+                    }
+                    Status.ERROR -> {
+                        loading_detail_cart.visibility = View.GONE
+                    }
+                    Status.LOADING -> {
+                        loading_detail_cart.visibility = View.VISIBLE
+                    }
+                }
+            }
+        })
+    }
+
+    private fun retrieveUpdateTables(data: ResponseJSON?) {
+        sessionManager.setNoOrder("")
+        sessionManager.setNameTablesUser("")
+        sessionManager.setTablesUser("")
+        sessionManager.setIdCart("")
+        findNavController().navigateUp()
+    }
+
     private fun retrieveInsertOrder(data: ResponseJSON?) {
         if (data?.error == false) {
-            sessionManager.setNoOrder("")
-            sessionManager.setNameTablesUser("")
-            sessionManager.setTablesUser("")
-            sessionManager.setIdCart("")
-            findNavController().navigateUp()
+            updateTables()
         } else {
             Utils().toast(requireContext(), data?.message.toString())
         }
@@ -130,7 +159,6 @@ class DetailCartFragment : Fragment() {
 
     private fun retrieveCartOrder(data: ResponseJSON?) {
         model.setDataCart(data?.values?.get(0)?.detail)
-        Log.i("Informais Data :: ", data?.values.toString())
         _detailCartAdapter.notifyDataSetChanged()
     }
 

@@ -83,7 +83,7 @@ class DashboardWaitersFragment : Fragment() {
     private fun retrieveCartOrder(data: ResponseJSON?) {
         if (!data?.values.isNullOrEmpty()) {
             btn_dashboard_waiter_status_cash.text = String.format(
-                "%s : %s",
+                "%s %s",
                 getString(R.string.status_cash),
                 Utils().getFormatRupiah(data?.values?.get(0)?.totalPrice.toString().toDouble())
             )
@@ -113,8 +113,20 @@ class DashboardWaitersFragment : Fragment() {
             navigateToChoiceTables()
         })
         model.openCash.observe(viewLifecycleOwner, EventObserver {
-            navigateToDetailCart()
+            if (btn_dashboard_waiter_status_cash.text.equals(getString(R.string.status_cash)))
+                Utils().toast(requireContext(), getString(R.string.please_choice_menu))
+            else
+                navigateToDetailCart()
         })
+        model.openProfile.observe(viewLifecycleOwner, EventObserver {
+            navigateToProfile()
+        })
+    }
+
+    private fun navigateToProfile() {
+        val actions =
+            DashboardWaitersFragmentDirections.actionDashboardWaitersFragmentToProfileFragment()
+        findNavController().navigate(actions)
     }
 
     private fun navigateToDetailCart() {

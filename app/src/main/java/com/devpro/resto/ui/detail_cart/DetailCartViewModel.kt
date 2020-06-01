@@ -60,4 +60,19 @@ class DetailCartViewModel(private val repository: AppRepository?) : ViewModel() 
         _onItemOrder.value = Event(Unit)
     }
 
+    fun updateTable(datas: ValuesItems) = liveData(Dispatchers.IO) {
+        emit(Resource.loading(data = null))
+        try {
+            emit(
+                Resource.success(
+                    data = repository?.getUpdateTables(
+                        datas
+                    )
+                )
+            )
+        } catch (exception: Exception) {
+            emit(Resource.error(data = null, message = exception.message ?: "Error Occurred!"))
+        }
+    }
+
 }
