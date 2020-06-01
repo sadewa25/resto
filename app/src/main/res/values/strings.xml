@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">RESTO</string>
+    <string name="app_name">RESTOO</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -45,4 +45,5 @@
     <string name="detail_order">Detail Pesanan</string>
     <string name="ic_detail_cart">Ikon Detail Belanja</string>
     <string name="qty_format">Qty : %s</string>
+    <string name="order">Pesan</string>
 </resources>

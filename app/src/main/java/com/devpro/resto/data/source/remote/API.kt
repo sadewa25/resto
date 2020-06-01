@@ -40,4 +40,9 @@ interface API {
     suspend fun getViewCartByOredr(
         @Body data: ValuesItems
     ): ResponseJSON
+
+    @POST("order/insertOrder.php")
+    suspend fun insertOrder(
+        @Body data: ValuesItems
+    ): ResponseJSON
 }

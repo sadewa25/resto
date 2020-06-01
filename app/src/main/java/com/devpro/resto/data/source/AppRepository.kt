@@ -55,4 +55,8 @@ class AppRepository(
         return remoteRepository.getViewCartByOrder(data)
     }
 
+    override suspend fun insertOrder(data: ValuesItems): ResponseJSON {
+        return remoteRepository.insertOrder(data)
+    }
+
 }

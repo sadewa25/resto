@@ -52,11 +52,27 @@
             android:layout_marginTop="@dimen/margin_medium_64"
             app:items="@{model.dataCart}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintBottom_toBottomOf="@+id/iv_detail_cart"
+            app:layout_constraintBottom_toTopOf="@+id/btn_order"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_detail_cart_title"
             tools:listitem="@layout/rv_item_detail_cart" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_order"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_default"
+            android:layout_marginTop="@dimen/margin_default"
+            android:layout_marginEnd="@dimen/margin_default"
+            android:layout_marginBottom="@dimen/margin_default"
+            android:onClick="@{()->model.onItemOrder()}"
+            android:text="@string/order"
+            app:backgroundTint="@color/primaryDarkColor"
+            app:cornerRadius="@dimen/margin_medium"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_detail_cart"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <ProgressBar
             android:id="@+id/loading_detail_cart"

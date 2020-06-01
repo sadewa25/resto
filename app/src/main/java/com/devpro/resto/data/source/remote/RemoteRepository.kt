@@ -35,4 +35,7 @@ class RemoteRepository(private val apiService: RetrofitClient) {
 
     suspend fun getViewCartByOrder(data:ValuesItems) =
         apiService.response().getViewCartByOredr(data)
+
+    suspend fun insertOrder(data:ValuesItems) =
+        apiService.response().insertOrder(data)
 }

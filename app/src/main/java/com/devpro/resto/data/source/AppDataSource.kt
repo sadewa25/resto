@@ -11,4 +11,5 @@ interface AppDataSource {
     suspend fun getUpdateTables(data:ValuesItems): ResponseJSON
     suspend fun insertCart(data:ValuesItems): ResponseJSON
     suspend fun getViewCartByOrder(data:ValuesItems): ResponseJSON
+    suspend fun insertOrder(data:ValuesItems): ResponseJSON
 }

@@ -7,7 +7,7 @@
 
         <variable
             name="menus"
-            type="com.devpro.resto.data.source.remote.response.ValuesItems" />
+            type="com.devpro.resto.data.source.remote.response.DetailItems" />
 
         <variable
             name="model"
@@ -31,7 +31,7 @@
                 style="@style/TextViewGeneral"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@{menus.detail.get(0).nameMenu}"
+                android:text="@{menus.nameMenu}"
                 android:textAlignment="center"
                 android:textColor="@color/primaryDarkColor"
                 android:textSize="@dimen/text_default"
@@ -53,7 +53,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_small"
-                android:text="@{String.format(@string/qty_format, menus.detail.get(0).qty)}"
+                android:text="@{String.format(@string/qty_format, menus.qty)}"
                 android:textAlignment="center"
                 android:textSize="@dimen/text_default"
                 app:layout_constraintEnd_toStartOf="@+id/gl_item_detail_cart"
@@ -64,7 +64,7 @@
             <TextView
                 android:id="@+id/tv_item_dashboard_price"
                 style="@style/TextViewGeneral"
-                rupiah="@{menus.detail.get(0).totalPrice}"
+                rupiah="@{menus.totalPrice}"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_small"

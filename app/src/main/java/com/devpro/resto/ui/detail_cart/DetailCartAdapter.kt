@@ -3,13 +3,13 @@ package com.devpro.resto.ui.detail_cart
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
-import com.devpro.resto.data.source.remote.response.ValuesItems
+import com.devpro.resto.data.source.remote.response.DetailItems
 import com.devpro.resto.databinding.RvItemDetailCartBinding
 import com.devpro.resto.utils.databinding.AppRecyclerView
 
 
 class DetailCartAdapter(viewModel: DetailCartViewModel) :
-    AppRecyclerView<DetailCartViewModel, RvItemDetailCartBinding, ValuesItems>(
+    AppRecyclerView<DetailCartViewModel, RvItemDetailCartBinding, DetailItems>(
         viewModel,
         DiffUtilDrug()
     ) {
@@ -23,7 +23,7 @@ class DetailCartAdapter(viewModel: DetailCartViewModel) :
     override fun onPrepareBindViewHolder(
         binding: RvItemDetailCartBinding,
         viewModel: DetailCartViewModel,
-        model: ValuesItems
+        model: DetailItems
     ) {
         binding.menus = model
         binding.model = viewModel
@@ -31,13 +31,13 @@ class DetailCartAdapter(viewModel: DetailCartViewModel) :
 
 }
 
-class DiffUtilDrug : DiffUtil.ItemCallback<ValuesItems>() {
+class DiffUtilDrug : DiffUtil.ItemCallback<DetailItems>() {
 
-    override fun areItemsTheSame(oldItem: ValuesItems, newItem: ValuesItems): Boolean {
+    override fun areItemsTheSame(oldItem: DetailItems, newItem: DetailItems): Boolean {
         return oldItem == newItem
     }
 
-    override fun areContentsTheSame(oldItem: ValuesItems, newItem: ValuesItems): Boolean {
+    override fun areContentsTheSame(oldItem: DetailItems, newItem: DetailItems): Boolean {
         return oldItem.idCart == newItem.idCart
     }
 
