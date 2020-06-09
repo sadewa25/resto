@@ -75,8 +75,7 @@ class TablesFragment : Fragment() {
     ) {
         sessionManager.setTablesUser(value.idMeja.toString())
         sessionManager.setNameTablesUser(value.nameMeja.toString())
-        Utils().toast(requireContext(), getString(R.string.already_update))
-        findNavController().navigateUp()
+        updateTables()
     }
 
     private fun setupLoadEntireTable() {
@@ -100,6 +99,37 @@ class TablesFragment : Fragment() {
                 }
             }
         })
+    }
+
+    private fun updateTables() {
+        model.updateTable(
+            ValuesItems(
+                apikey = BuildConfig.API_Key,
+                namaMeja = sessionManager.getNameTablesUser(),
+                idMeja = sessionManager.getTablesUser(),
+                statusMeja = getString(R.string.emptys_)
+            )
+        ).observe(viewLifecycleOwner, Observer {
+            it?.let { resource ->
+                when (resource.status) {
+                    Status.SUCCESS -> {
+                        loading_tables.visibility = View.GONE
+                        resource.data.let { data -> retrieveUpdateTables(data) }
+                    }
+                    Status.ERROR -> {
+                        loading_tables.visibility = View.GONE
+                    }
+                    Status.LOADING -> {
+                        loading_tables.visibility = View.VISIBLE
+                    }
+                }
+            }
+        })
+    }
+
+    private fun retrieveUpdateTables(data: ResponseJSON?) {
+        Utils().toast(requireContext(), getString(R.string.already_update))
+        findNavController().navigateUp()
     }
 
     private fun retrieveList(data: ResponseJSON?) {

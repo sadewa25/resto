@@ -53,4 +53,5 @@
     <string name="signout">Keluar</string>
     <string name="confirmation_signout">Apakah Anda Ingin Keluar?</string>
     <string name="waiters">Waiters</string>
+    <string name="emptys_">Kosong</string>
 </resources>
